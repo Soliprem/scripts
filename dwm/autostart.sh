@@ -1,0 +1,1 @@
+/home/soliprem/.local/share/dwm/autostart.sh
