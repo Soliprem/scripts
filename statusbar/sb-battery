@@ -4,12 +4,12 @@
 # to charge status (🔌 for plugged up, 🔋 for discharging on battery, etc.).
 
 case $BLOCK_BUTTON in
-3) notify-send "🔋 Battery module" "🔋: discharging
-: not charging
+3) notify-send "🔋 Battery module" ": discharging
+: not charging
 : stagnant charge
 : charging
 : charged
-❗: battery very low!
+: battery very low!
 - Scroll to change adjust xbacklight." ;;
 4) xbacklight -inc 10 ;;
 5) xbacklight -dec 10 ;;
@@ -22,11 +22,11 @@ for battery in /sys/class/power_supply/BAT?*; do
 	[ -n "${capacity+x}" ] && printf " "
 	# Sets up the status and capacity
 	case "$(cat "$battery/status" 2>&1)" in
-	"Full") status="⚡" ;;
-	"Discharging") status="🔋" ;;
-	"Charging") status="🔌" ;;
-	"Not charging") status="🛑" ;;
-	"Unknown") status="♻️" ;;
+	"Full") status="" ;;
+	"Discharging") status="" ;;
+	"Charging") status="" ;;
+	"Not charging") status="" ;;
+	"Unknown") status="" ;;
 	*) exit 1 ;;
 	esac
 	capacity="$(cat "$battery/capacity" 2>&1)"
