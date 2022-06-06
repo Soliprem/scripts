@@ -1,0 +1,11 @@
+#!/bin/sh
+rm -rf $HOME/Astrogit_backup
+mkdir $HOME/Astrogit_backup
+mv $HOME/.config/nvim/.git $HOME/Astrogit_backup
+mv $HOME/.config/nvim/.gitignore $HOME/Astrogit_backup
+mv $HOME/.config/nvim/.github $HOME/Astrogit_backup
+/usr/bin/git --git-dir=/home/soliprem/.cfg --work-tree=/home/soliprem commit -a -m ""
+mv $HOME/Astrogit_backup/.git $HOME/.config/nvim
+mv $HOME/Astrogit_backup/.gitignore $HOME/.config/nvim
+mv $HOME/Astrogit_backup/.github $HOME/.config/nvim
+rmdir Astrogit_backup

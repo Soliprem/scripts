@@ -1,0 +1,9 @@
+#!/bin/env sh
+
+if [ "$2" = "stop" ]; then
+  pkill -f "entr compiler $1";
+  exit
+fi
+
+pkill -f "entr compiler $1" && exit
+echo "$1" | entr compiler "$1" && exit

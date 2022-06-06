@@ -1,0 +1,4 @@
+#!/bin/sh
+WORD="$(echo "\n" | dmenu -p "Enter Word")"
+
+dym -c $WORD | dmenu -p "Select Correct Spelling" | xclip -selection clipboard
