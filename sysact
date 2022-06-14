@@ -1,6 +1,6 @@
 #!/bin/sh
 
-# A dmenu wrapper script for system functions.
+# A rofi -dmenu wrapper script for system functions.
 export WM="dwm"
 case "$(readlink -f /sbin/init)" in
 	*systemd*) ctl='systemctl' ;;
@@ -13,7 +13,7 @@ wmpid(){ # This function is needed if there are multiple instances of the window
 	echo "${tree%%)*}"
 }
 
-case "$(printf "🔒 lock\n🚪 leave $WM\n♻️ renew $WM\n🐻 hibernate\n🔃 reboot\n🖥️shutdown\n💤 sleep\n📺 display off" | dmenu -i -p 'Action: ')" in
+case "$(printf "🔒 lock\n🚪 leave $WM\n♻️ renew $WM\n🐻 hibernate\n🔃 reboot\n🖥️shutdown\n💤 sleep\n📺 display off" | rofi -dmenu -i -p 'Action: ')" in
 	'🔒 lock') slock ;;
 	"🚪 leave $WM") kill -TERM "$(wmpid)" ;;
 	"♻️ renew $WM") kill -HUP "$(wmpid)" ;;
