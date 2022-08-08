@@ -1,0 +1,4 @@
+#!/bin/sh
+gsettings set org.gnome.desktop.interface gtk-theme 'Gruvbox-Material-Dark'
+gsettings set org.gnome.desktop.interface icon-theme 'Gruvbox-Material-Dark'
+swaybg -i ~/.config/wall &
