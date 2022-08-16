@@ -1,0 +1,6 @@
+#!/bin/sh
+
+mpc random >>/dev/null
+mpc next >>/dev/null
+mpc play >>/dev/null
+mpc random

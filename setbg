@@ -33,8 +33,8 @@ else
 	[ -f "$zathuraconf.bak" ] && unlink "$zathuraconf" && mv "$zathuraconf.bak" "$zathuraconf"
 fi
 
-if [ "$XDG_SESSION_TYPE" = "x11" ]; then
-	xwallpaper --zoom "$bgloc"
-else
+if [ "$XDG_SESSION_TYPE" = "wayland" ]; then
 	swaybg -i "$bgloc" &
+else
+	xwallpaper --zoom "$bgloc"
 fi
