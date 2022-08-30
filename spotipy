@@ -1,0 +1,2 @@
+#!/bin/sh
+python ~/.local/src/spotify2mp3/run.py
