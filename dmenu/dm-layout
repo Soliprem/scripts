@@ -1,16 +1,15 @@
 #!/usr/bin/env bash
-#
-# Script name: dm-dictionary
-# Description: uses the translate package as a dictionary
-# Dependencies: translate-shell, didyoumean
+
+# Script name: dm-colpick
+# Description: Copy a color to your clipboard using dmenu, change the colors if needed
+# Dependencies: dmenu, xclip
 # GitLab: https://www.gitlab.com/dwt1/dmscripts
 # License: https://www.gitlab.com/dwt1/dmscripts/LICENSE
 # Contributors: Francesco Prem Solidoro
 
-# Set with the flags "-e", "-u","-o pipefail" cause the script to fail
+# Set with the flags "-e", "-o pipefail" cause the script to fail
 # if certain things happen, which is a good thing.  Otherwise, we can
 # get hidden bugs that are hard to discover.
-
 set -euo pipefail
 
 _path="$(cd "$(dirname "${BASH_SOURCE[0]}")" && cd "$(dirname "$(readlink "${BASH_SOURCE[0]}" || echo ".")")" && pwd)"
@@ -26,25 +25,7 @@ fi
 # shellcheck disable=SC1090
 source "$(get_config)"
 
-main() {
 
-WORD="$(${DMENU} "Search:")"
-TESTWORD="$(dym -c -n=1 "$WORD")"
+LAYOUT="$(localectl list-keymaps | ${DMENU} Layout)"
 
-if [ "$WORD" != "$TESTWORD" ]; then
-	KEYWORD=$(dym -c "$WORD" | ${DMENU} "was $WORD a misspelling?(select/no)")
-	if [ "$KEYWORD" = "no" ] || [ "$KEYWORD" = "n" ]; then
-		KEYWORD="$WORD"
-	fi
-else
-	KEYWORD="$WORD"
-fi
-
-if ! [ "${KEYWORD}" ]; then
-	printf 'No word inserted\n' >&2
-	exit 0
-fi
-$DMTERM wikicurses "$WORD"
-}
-
-[[ "${BASH_SOURCE[0]}" == "${0}" ]] && main "$@"
+export XKB_DEFAULT_LAYOUT="$LAYOUT"
