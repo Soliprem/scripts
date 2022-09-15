@@ -22,6 +22,7 @@ if [[ $STATE != 'true' ]]; then
                 ICON=墳
         fi
 
+        makoctl dismiss -a
         notify-send "Volume: $VOLUME%" \
             -t 2000 \
             -i ${ICON} \
@@ -30,6 +31,7 @@ if [[ $STATE != 'true' ]]; then
 
 # If volume is muted, display the mute sybol:
 else
+        makoctl dismiss -a
         notify-send "Muted (volume: $VOLUME%)" \
             -t 2000 \
             -i 婢 \

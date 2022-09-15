@@ -1,4 +1,5 @@
 #!/bin/sh
+makoctl dismiss -a
 
 songname=$(basename "$(mpc current | sed "-e s/ /_/g" )" | sed -e "s/_/ /g" -e "s/.mp3//g")
 playpause=$(mpc status | head -2 | tail -1 | sed -e 's/\s.*$//')

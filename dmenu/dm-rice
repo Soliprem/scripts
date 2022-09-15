@@ -27,11 +27,8 @@ source "$(get_config)"
 
 main(){
   # wm=$(printf "%s" wm_list[@] | ${DMENU} "pick a WM")
-  theme=$(find "$HOME"/.local/src/suckless/dwm/colors/* | cut -d / -f9- | sed -e s/colors.h//g | sort | ${DMENU} "Pick a Theme")
-  cd "$HOME"/.local/src/suckless/dwm/colors
-  rm colors.h
-  cp "$theme" colors.h
-  cd ..
+  theme=$(find "$HOME"/.config/wpg/wallpapers/* | cut -d / -f7- | sort | ${DMENU} "Pick a Theme")
+  wpg -s "$theme"
   $SUDO_ASKPASS make install
 }
 
