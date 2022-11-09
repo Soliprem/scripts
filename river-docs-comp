@@ -1,0 +1,2 @@
+#!/bin/sh
+grep -G "riverctl map" "$HOME"/.config/river/init | less
