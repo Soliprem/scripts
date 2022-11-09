@@ -1,3 +1,6 @@
 #!/bin/sh
-wlsunset
-ka wlsunset
+if pidof wlsunset; then
+	killall wlsunset
+else
+	wlsunset
+fi
