@@ -1,6 +1,9 @@
 #!/bin/sh
+makoctl dismiss -a
 if pidof wlsunset; then
+	notify-send "Night Mode Off"
 	killall wlsunset
 else
+	notify-send "Night Mode On"
 	wlsunset
 fi
