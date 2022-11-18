@@ -26,12 +26,12 @@ fi
 source "$(get_config)"
 
 main() {
-	DIRECTION=$(printf "from binary\nto binary" | rofi -dmenu)
-	NUMBER=$(rofi -dmenu -p "choose number:")
+	DIRECTION=$(printf "from binary\nto binary" | ${DMENU})
+	NUMBER=$(${DMENU} -p "choose number:")
 	if [ "$XDG_SESSION_TYPE" = "wayland" ]; then
-		binary "$NUMBER" "$DIRECTION" | rofi -dmenu | wl-copy
+		binary "$NUMBER" "$DIRECTION" | ${DMENU} | wl-copy
 	else
-		binary "$NUMBER" "$DIRECTION" | rofi -dmenu | xclip
+		binary "$NUMBER" "$DIRECTION" | ${DMENU} | xclip
 	fi
 }
 
