@@ -10,21 +10,22 @@ custom = []
 def decision():
     global custom
     choice = input("what next? Press:\ne: edition\ns: section/chapter\np: publisher\nc: custom\nq: quit\n:")
-    if choice == "q":
-        return
-    elif choice == "e":
-        custom.append("\n\tedition = " + "{" + input("edition: ") + "},")
-        print("\n")
-    elif choice == "s":
-        custom.append("\n\tchapter = " + "{" + input("chapter/section: ") + "},")
-        print("\n")
-    elif choice == "p":
-        custom.append("\n\tpublisher = " + "{" + input("publisher: ") + "},")
-        print("\n")
-    elif choice == "c":
-        category = input("category\n:")
-        custom.append("\n\t"+ category + " = " + "{" + input(category+"\n:") + "},")
-        print("\n")
+    match choice:
+        case "q":
+            return
+        case "e":
+            custom.append("\n\tedition = " + "{" + input("edition: ") + "},")
+            print("\n")
+        case "s":
+            custom.append("\n\tchapter = " + "{" + input("chapter/section: ") + "},")
+            print("\n")
+        case  "p":
+            custom.append("\n\tpublisher = " + "{" + input("publisher: ") + "},")
+            print("\n")
+        case "c":
+            category = input("category\n:")
+            custom.append("\n\t"+ category + " = " + "{" + input(category+"\n:") + "},")
+            print("\n")
     decision()
 
 def write(file):
