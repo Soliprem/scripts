@@ -22,18 +22,12 @@ if [[ $STATE != 'true' ]]; then
 	fi
 
 	makoctl dismiss -a
-	notify-send "Volume: $VOLUME%" \
-		-t 2000 \
-		-i ${ICON} \
-		-h int:value:"${VOLUME}" \
-		-h string:synchronous:volume-change
+	notify-send "${ICON} Volume: $VOLUME%" \
+		-h int:value:"${VOLUME}"
 
 # If volume is muted, display the mute sybol:
 else
 	makoctl dismiss -a
-	notify-send "Muted (volume: $VOLUME%)" \
-		-t 2000 \
-		-i 婢 \
-		-h int:value:"${VOLUME}" \
-		-h string:synchronous:volume-change
+	notify-send "婢 (Volume: $VOLUME%)" \
+		-h int:value:"${VOLUME}"
 fi

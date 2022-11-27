@@ -1,5 +1,4 @@
 #!/bin/sh
-cd "$HOME"/vimwiki || echo "error" exit 1
 git add .
 git commit -am "update"
 git push

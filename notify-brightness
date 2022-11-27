@@ -1,0 +1,16 @@
+#!/bin/bash
+BRIGHTNESS=$(brightnessctl | sed 's/.*(\(.*\))/\1/' | sed -e 's/%//g' | head -n 2 | tail -n 1)
+
+if [ "${BRIGHTNESS}" == "0" ]; then
+	ICON=
+elif [ "${BRIGHTNESS}" -lt "33" ] && [ "$BRIGHTNESS" -gt "0" ]; then
+	ICON=
+elif [ "${BRIGHTNESS}" -lt "90" ] && [ "$BRIGHTNESS" -ge "33" ]; then
+	ICON=
+else
+	ICON=
+fi
+
+makoctl dismiss -a
+notify-send "${ICON} $BRIGHTNESS%" \
+	-h int:value:"${BRIGHTNESS}"
