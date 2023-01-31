@@ -1,0 +1,9 @@
+#!/bin/sh
+grep -G "riverctl map" "$HOME"/.config/river/init |
+	sed -e "s/riverctl//g" \
+		-e "s/-repeat//g" \
+		-e "s/normal//g" \
+		-e "s/\$mod/Super/g" \
+		-e "s/map//g" \
+		-e "s/spawn/=/g" |
+	less

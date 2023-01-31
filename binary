@@ -1,0 +1,31 @@
+#!/bin/python3
+import sys
+
+number, direction = sys.argv[1], sys.argv[2]
+
+
+def choice():
+    if direction == "from binary":
+        from_binary(number)
+    elif direction == "to binary":
+        to_binary(number)
+    else:
+        print("wrong input")
+
+
+def to_binary(number):
+    print(bin(int(number))[2:])
+
+
+def from_binary(number):
+    output = 0
+    lenght = len(number)
+    for i in range(lenght):
+        if number[i] == "1":
+            output = output + 2 ** (int(lenght - i - 1))
+        elif number[i] == "0":
+            output = output + 0
+    print(int(output))
+
+
+choice()

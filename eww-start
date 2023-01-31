@@ -1,0 +1,5 @@
+#!/bin/sh
+
+eww open bar_right
+eww open bar_center
+eww open bar_left

@@ -1,0 +1,9 @@
+#!/bin/bash
+
+FILES="$(ls ~/.local/src/wallpapers/)"
+for FILE in $FILES
+do
+  git add "$FILE"
+  git commit -am "added $FILE"
+  git push origin main
+done

@@ -1,0 +1,83 @@
+#!/bin/python3
+# This is a script to automate adding entries to your Biber (or similar) bibliography list. Set the path to you file below
+
+import os
+
+# Path to your bib file
+mybibfile = "/home/soliprem/notes/latex_stuff/soli_list.bib"
+custom = []
+
+
+def decision():
+    global custom
+    choice = os.system(
+        "echo 'edition\nsection/chapter\npublisher\ncustom\nquit' | rofi -dmenu -p 'what next?'"
+    )
+    match choice:
+        case "quit":
+            return
+        case "edition":
+            custom.append(
+                "\n\tedition = "
+                + "{"
+                + str(os.system("rofi -dmenu 'edition': "))
+                + "},"
+            )
+            print("\n")
+        case "section/chapter":
+            custom.append(
+                "\n\tchapter = "
+                + "{"
+                + str(os.system("rofi -dmenu -p 'chapter/section:' "))
+                + "},"
+            )
+            print("\n")
+        case "publisher":
+            custom.append(
+                "\n\tpublisher = "
+                + "{"
+                + str(os.system("rofi -dmenu -p 'publisher: '"))
+                + "},"
+            )
+            print("\n")
+        case "custom":
+            category = str(os.system("rofi -dmenu -p 'category:'"))
+            custom.append(
+                "\n\t" + category + " = " + "{" + input(category + "\n:") + "},"
+            )
+            print("\n")
+    decision()
+
+
+def write(file):
+    with open(file, "a") as f:
+        f.write(kind)
+        f.write(tag)
+        f.write(author)
+        f.write(year)
+        f.write(title)
+        for i in custom:
+            f.write(i)
+        f.write("\n}")
+
+
+kind = "\n@" + str(os.system("rofi -dmenu -p 'type: '"))
+tag = "{" + str(os.system("rofi -dmenu -p 'tag:' ")) + ","
+author = "\n\tauthor" + " = {" + str(os.system("rofi -dmenu -p 'author:'")) + "},"
+year = "\n\tyear" + " = {" + str(os.system('rofi -dmenu -p "year: "')) + "},"
+title = "\n\ttitle" + " = {" + str(os.system('rofi -dmenu -p "title: "')) + "},"
+print("\n")
+
+decision()
+
+check = input("review entry? (y/n)\n:")
+if check == "y":
+    os.system("touch tempfile")
+    write("tempfile")
+    os.system("foot cat tempfile")
+    os.system("rm tempfile")
+    print("\n\n")
+
+confirm = input("confirm? (y/n))\n:")
+if confirm == "y":
+    write(mybibfile)

@@ -1,0 +1,14 @@
+<<<<<<< HEAD
+#!/bin/sh
+# for normal font:
+# font="$(gsettings get org.gnome.desktop.interface font-name)"
+
+# for monospace font:
+font="$(gsettings get org.gnome.desktop.interface font-name)"
+
+font="${font//\'}"
+font_name="${font% *}"
+font_size="${font##* }"
+
+echo "The font is:"
+echo "$font_name:size=$font_size:antialias=false"
