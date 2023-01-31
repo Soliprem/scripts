@@ -1,0 +1,9 @@
+#!/bin/sh
+WORD="$(rofi -dmenu -p "Enter Word:")"
+
+if ! [ "${WORD}" ] || [ "${WORD}" = "quit" ]; then
+	printf 'No word inserted\n' >&2
+	exit 0
+fi
+
+dym -c "$WORD" | rofi -dmenu -p "Select Correct Spelling:" | xclip -selection clipboard

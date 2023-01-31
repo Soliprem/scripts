@@ -1,0 +1,20 @@
+#!/bin/bash
+rm pizze.pdf
+
+TEMP=$(mktemp)
+
+echo "\\documentclass{article}
+\\title{Ordine Pizze}
+\\author{$USER}
+\\begin{document}
+\\maketitle
+\\begin{itemize}" >> "$TEMP"
+
+echo "$1" | sed -e 's/^/\\item{/' | sed -e 's/$/}/' >> "$TEMP"
+echo "\\end{itemize}
+\\end{document}" >> "$TEMP"
+lualatex "$TEMP"
+latex-clean
+mv tmp.pdf pizze.pdf
+# sleep 10
+# rm "$TEMP"

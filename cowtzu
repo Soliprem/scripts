@@ -1,0 +1,5 @@
+#!/bin/sh
+clear && cowsay "\"$1\"
+
+- Sun Tzu, the Art of War
+"

@@ -1,0 +1,44 @@
+#!/bin/env bash
+
+# gv files: Compile to png
+# roff files: Compile to pdf, including bibliography if necessary
+# tex files: Compiles to pdf, including bibliography if necessary
+# md files: Compiles to pdf via pandoc
+# rmd files: Compiles via R Markdown
+# c files: Compiles via whatever compiler is set to cc. Usually gcc.
+# py files: runs via python command
+# go files: compiles and runs with "go run"
+# config.h files: (For suckless utils) recompiles and installs program.
+
+file=$(readlink -f "$1")
+dir=$(dirname "$file")
+base="${file%.*}"
+
+cd "$dir" || exit
+
+pdfpcCleanup() {
+	[ -e "$base".pdfpc ] && sed -i 's/\\\\/\n/g' "$base".pdfpc && sed -i 's/\\par/\n\n/g' "$base".pdfpc
+}
+
+case "$file" in
+*\.uml | *\.pu | *\.puml) plantuml "$file" ;;
+*\.gv | *\.dot) dot -Tpng "$file" -o "$base".png ;;
+*\.ms) refer -PS -e "$file" | groff -me -ms -kejpt -T pdf >"$base".pdf ;;
+*\.mom) refer -PS -e "$file" | groff -mom -kejpt -T pdf >"$base".pdf ;;
+*\.rmd) echo "require(rmarkdown);rmarkdown::render('$file', quiet=TRUE)" | R -q --vanilla && pdfpcCleanup ;;
+*\.tex) if [[ $dir = "$HOME/latex_stuff/DND-5e-LaTeX-Character-Sheet-Template/*" ]]; then
+	lualatex "$file" && latex-clean
+else
+	latexmk -synctex=1 --pdf "$file" && [ -e "$base".pdfpc ] && pdfpcCleanup
+fi ;;
+*\.md) if [ -e "$base"_template.tex ]; then
+	pandoc --template "$base"_template.tex "$file" --filter pandoc-crossref --citeproc --variable urlcolor=blue -o "$base".pdf
+else
+	pandoc "$file" -t ms --highlight-style=kate --filter pandoc-crossref --citeproc --variable urlcolor=blue -s -o "$base".pdf
+fi ;;
+*config.h) make && sudo make install ;;
+*\.c) gcc "$file" -o "$base" && "$base" ;;
+*\.py) python "$file" ;;
+*\.go) go run "$file" ;;
+*\.shortcuts) genshortcuts ;;
+esac

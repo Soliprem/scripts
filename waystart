@@ -1,0 +1,5 @@
+#!/bin/sh
+gsettings set org.gnome.desktop.interface gtk-theme 'FlatColor'
+gsettings set org.gnome.desktop.interface icon-theme 'FlatColor'
+gsettings set org.gnome.desktop.wm.preferences button-layout ""
+# swaybg -i ~/.config/bg &
