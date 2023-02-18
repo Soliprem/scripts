@@ -1,6 +1,6 @@
-#!/bin/bash
+#!/bin/env bash
 if [[ "$1" ]]; then
 	cd "$HOME/.local/src/$1" || echo "error"
 else
-	cd "$HOME/.local/src"/"$(/bin/ls "$HOME/.local/src/" | fzf)" || echo "error"
+	cd "$(/bin/ls -d "$HOME"/.local/src/*/ | fzf)" || echo "error"
 fi

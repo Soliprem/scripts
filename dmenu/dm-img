@@ -26,28 +26,30 @@ fi
 source "$(get_config)"
 
 main() {
-  choice=$(fd --absolute-path -e pdf -e jpg -e png -e jpeg -e mp4 -e mp3 . -H -E "*wpg*" |
-    cut -d '/' -f4- |
-    sed -e 's/Documents/Dcs/g' \
-    -e 's/Downloads/Dwn/g' \
-    -e 's/.local/lcl/g' \
-    -e 's/Pictures/Pic/g' \
-    -e 's/Images/Img/g' |
-    sort -g |
-    ${DMENU} "File: " "$@") || exit 1
-      if [ "$choice" ]; then
-        file=$(
-        printf '%s' "$choice" |
-          sed -e 's/Dcs/Documents/g' \
-          -e 's/Dwn/Downloads/g' \
-          -e 's/lcl/.local/g' \
-          -e 's/Pic/Pictures/g' \
-          -e 's/Img/Images/g'
-        )
-        dragon-drop "$HOME"/"${file}"
-      else
-        echo "Program Terminated." && exit 0
-      fi
-    }
+	files="$(find "$HOME" -maxdepth 5 -iname "*.png")"
+	choice=$(printf '%s\n' "${files[@]}" |
+		cut -d '/' -f4- |
+		sed -e 's/Documents/Dcs/g' \
+			-e 's/Downloads/Dwn/g' \
+			-e 's/.local/lcl/g' \
+			-e 's/Pictures/Pic/g' \
+			-e 's/Images/Img/g' \
+			-e 's/.png//g' |
+		sort -g |
+		${DMENU} "File: " "$@") || exit 1
+	if [ "$choice" ]; then
+		file=$(
+			printf '%s' "$choice" |
+				sed -e 's/Dcs/Documents/g' \
+					-e 's/Dwn/Downloads/g' \
+					-e 's/lcl/.local/g' \
+					-e 's/Pic/Pictures/g' \
+					-e 's/Img/Images/g'
+		)
+		dragon-drop "$HOME/${file}.png"
+	else
+		echo "Program Terminated." && exit 0
+	fi
+}
 
 [[ "${BASH_SOURCE[0]}" == "${0}" ]] && main "$@"
