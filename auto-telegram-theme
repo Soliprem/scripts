@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+
+"$HOME"/.local/src/wal-telegram/wal-telegram -p "$HOME"/.config/wpg/templates/telegram-theme.sh -r
