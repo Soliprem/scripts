@@ -1,4 +1,4 @@
-#!/bin/env sh
+#!/usr/bin/env sh
 
 if [ "$2" = "stop" ]; then
   pkill -f "entr compiler $1";

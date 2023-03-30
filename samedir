@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env bash
 
 # Open a terminal window in the same directory as the currently active window.
 

@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env bash
 
 # Originally by Andr3as07 <https://github.com/Andr3as07>
 # Some changes by Luke

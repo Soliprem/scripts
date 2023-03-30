@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 #
 # Script name: dm-documents
 # Description: Search for a process to kill.
@@ -26,15 +26,13 @@ fi
 source "$(get_config)"
 
 main(){
-  files="$(find "$HOME" -maxdepth 5 -iname "*.pdf")"
-  choice=$( printf '%s\n' "${files[@]}" | \
+  choice=$(fd --absolute-path -e pdf -e jpg -e png -e jpeg -e mp4 -e mp3 . -H -E "*wpg*" |
         cut -d '/' -f4- | \
         sed -e 's/Documents/Dcs/g' \
         -e 's/Downloads/Dwn/g' \
         -e 's/.local/lcl/g' \
         -e 's/Pictures/Pic/g' \
-        -e 's/Images/Img/g' \
-        -e 's/.pdf//g' | \
+        -e 's/Images/Img/g' |\
         sort -g | \
       ${DMENU} "File: " "$@") || exit 1
   if [ "$choice" ]; then
@@ -45,7 +43,7 @@ main(){
         -e 's/Pic/Pictures/g' \
         -e 's/Img/Images/g' \
   )
-        xdg-open "$HOME/${file}.pdf"
+        xdg-open "$HOME/${file}"
   else
     echo "Program Terminated." && exit 0
   fi

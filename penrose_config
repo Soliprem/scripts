@@ -1,2 +1,2 @@
-#!/bin/sh
+#!/usr/bin/env bash
 ~/.local/src/Penrose/target/release/Penrose --mywm-terminal "alacritty" --mywm-launcher "rofi -show run" --mywm-start-script "$HOME/.config/autostart/autostart.sh"

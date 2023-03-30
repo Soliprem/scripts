@@ -1,4 +1,4 @@
-#!/bin/python3
+#!/usr/bin/env python3
 # This is a script to automate adding entries to your Biber (or similar) bibliography list. Set the path to you file below 
 
 import os

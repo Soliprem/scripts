@@ -1,4 +1,4 @@
-#!/bin/python3
+#!/usr/bin/env python3
 import sys
 
 number, direction = sys.argv[1], sys.argv[2]

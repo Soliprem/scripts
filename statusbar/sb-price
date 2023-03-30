@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env bash
 
 # Usage:
 #	price <url> <Name of currency> <icon> <Price to show in>

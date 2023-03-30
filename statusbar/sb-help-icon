@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env bash
 
 # The clickable help menu. Middle click to restart wm.
 

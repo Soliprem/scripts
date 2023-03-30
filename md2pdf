@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 cmark "$1" >Lorem_ipsum_dolor_sit_amet_qui_minim_labore_adipisicing_minim_sint_cillum_sint_consectetur_cupidata.html
 if [[ $2 ]]; then
 	pandoc Lorem_ipsum_dolor_sit_amet_qui_minim_labore_adipisicing_minim_sint_cillum_sint_consectetur_cupidata.html -o "$2"

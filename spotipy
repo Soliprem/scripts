@@ -1,2 +1,2 @@
-#!/bin/sh
+#!/usr/bin/env bash
 python ~/.local/src/spotify2mp3/run.py

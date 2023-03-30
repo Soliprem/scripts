@@ -1,4 +1,4 @@
-#!/bin/env sh
+#!/usr/bin/env sh
 
 # gv files: Compile to png
 # roff files: Compile to pdf, including bibliography if necessary

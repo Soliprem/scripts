@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env bash
 gsettings set org.gnome.desktop.interface gtk-theme 'FlatColor'
 gsettings set org.gnome.desktop.interface icon-theme 'FlatColor'
 gsettings set org.gnome.desktop.wm.preferences button-layout ""

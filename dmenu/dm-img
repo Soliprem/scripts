@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 #
 # Script name: dm-documents
 # Description: Search for a process to kill.
@@ -46,7 +46,7 @@ main() {
 					-e 's/Pic/Pictures/g' \
 					-e 's/Img/Images/g'
 		)
-		dragon-drop "$HOME/${file}.png"
+		dragon "$HOME/${file}.png"
 	else
 		echo "Program Terminated." && exit 0
 	fi

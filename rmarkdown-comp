@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+if [[ $1 ]]; then
+  Rscript -e "rmarkdown::render('$1')"
+else
+  Rscript -e "rmarkdown::render('$(fzf)')"
+fi

@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env bash
 # for normal font:
 # font="$(gsettings get org.gnome.desktop.interface font-name)"
 

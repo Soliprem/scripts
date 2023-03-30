@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 #
 # Script name: dm-dictionary
 # Description: uses the translate package as a dictionary

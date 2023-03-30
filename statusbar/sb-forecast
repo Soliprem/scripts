@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env bash
 
 # Displays todays precipication chance (☔) and daily low (🥶) and high (🌞).
 # Usually intended for the statusbar.

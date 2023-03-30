@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env bash
 
 if echo "$1" | grep -q "https*://\S\+\.[A-Za-z]\+\S*" ; then
 	url="$1"

@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env bash
 # Gives a rofi -dmenu prompt to mount unmounted local NAS shares for read/write.
 # Requirements - "%wheel ALL=(ALL) NOPASSWD: ALL"
 #

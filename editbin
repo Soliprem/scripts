@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+read -n 1 -rp "do you wish to edit as root? (y/N)" ANSWER
+echo -e "\n"
+if [[ $ANSWER = y ]]; then
+  sudo $EDITOR $(which $1)
+else
+  $EDITOR $(which $1)
+fi

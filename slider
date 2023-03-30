@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env bash
 
 # Give a file with images and timecodes and creates a video slideshow of them.
 #

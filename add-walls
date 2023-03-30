@@ -1,19 +1,7 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
-# Function to list all files, even from subdirectories
-cd ~/.local/src/wallpapers || exit
-  # Loop through all items in the current directory
-  for item in $(ls -d */); do
-    # Check if the item is a directory
-    if [ -d "$item" ]; then
-      # If it's a directory, go inside and call the function recursively
-      cd "$item"
-      wpg -a *
-      cd ..
-    else
-      # If it's a file, print its name
-      wpg -a 
-    fi
+  for file in $(find ~/.local/src/wallpapers/ | sed '/\.git/d'); do
+    # if [[ $(xdg-mime query filetype "$file") =~ "image/*" ]] then
+    wpg -a "$file"
+    # fi
   done
-cd ~/.local/src/wallpapers || exit
-wall -a *

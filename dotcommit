@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env bash
 rm -rf $HOME/Astrogit_backup
 mkdir $HOME/Astrogit_backup
 mv $HOME/.config/nvim/.git $HOME/Astrogit_backup

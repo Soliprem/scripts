@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env bash
 
 err() { echo "Usage:
 	tag [OPTIONS] file

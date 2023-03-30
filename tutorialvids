@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env bash
 
 # This gives the user a list of videos they can select and watch without a
 # browser. If you want to check a tutorial video, it makes it easy. I'll

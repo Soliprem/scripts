@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+curl $1 | less
+echo "do you wish to run this script? (y/N)"

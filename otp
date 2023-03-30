@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env bash
 
 # Get a one-time password, or add a OTP secret to your pass-otp store.
 

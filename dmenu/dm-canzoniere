@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # Script name: dm-colpick
 # Description: Copy a color to your clipboard using dmenu, change the colors if needed

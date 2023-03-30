@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env bash
 # torrent peertube videos, requires the transadd script
 # first argument is the video link, second is the quality (360, 480 or 1080)
 # 13/07/20 - Arthur Bais

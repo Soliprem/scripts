@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env bash
 
 mpc random >>/dev/null
 mpc next >>/dev/null

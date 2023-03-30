@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/env python
 """
 This module is querying PyPI to check if the current version set to package is already present on PyPI.
 

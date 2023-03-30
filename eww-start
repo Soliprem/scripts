@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env bash
 
 eww open bar_right
 eww open bar_center

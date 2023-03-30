@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env bash
 makoctl dismiss -a
 
 songname=$(basename "$(mpc current | sed "-e s/ /_/g" )" | sed -e "s/_/ /g" -e "s/.mp3//g")

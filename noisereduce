@@ -1,4 +1,4 @@
-#!/usr/bin/sh
+#!/usr/usr/bin/env bash
 
 usage ()
 {

@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env bash
 
 bmdirs="${XDG_CONFIG_HOME:-$HOME/.config}/shell/bm-dirs"
 bmfiles="${XDG_CONFIG_HOME:-$HOME/.config}/shell/bm-files"

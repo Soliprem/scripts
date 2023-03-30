@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env bash
 
 # Module showing CPU load as a changing bars.
 # Just like in polybar.

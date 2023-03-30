@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 BRIGHTNESS=$(brightnessctl | sed 's/.*(\(.*\))/\1/' | sed -e 's/%//g' | head -n 2 | tail -n 1)
 
 if [ "${BRIGHTNESS}" == "0" ]; then

@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env bash
 
 # Usage:
 # `$0`: Ask for recording type via rofi -dmenu

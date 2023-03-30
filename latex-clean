@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # Note: you might prefer   latexmk -c   since latexmk is great. It doesn't clean all of these, but see
 #   https://tex.stackexchange.com/questions/83341/clean-bbl-files-with-latexmk-c/83386#83386

@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env bash
 
 # This script is called on startup to remap keys.
 # Decrease key repeat delay to 300ms and increase key repeat rate to 50 per second.

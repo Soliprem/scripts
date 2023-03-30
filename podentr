@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env bash
 
 # entr command to run `queueandnotify` when newsboat queue is changed
 

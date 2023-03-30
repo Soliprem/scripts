@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env bash
 
 # Some optional functions in LARBS require programs not installed by default. I
 # use this little script to check to see if a command exists and if it doesn't

@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env bash
 
 # A rofi -dmenu prompt to unmount drives.
 # Provides you with mounted partitions, select one to unmount.

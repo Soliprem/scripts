@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+TEMPFILE=$(mktemp)
+curl "$1" >> $TEMPFILE
+less $TEMPFILE
+read -n 1 -rp "do you wish to run this script? (y/N)" ANSWER
+echo -e "\n"
+if [[ $ANSWER = "y" ]]; then
+  chmod +x $TEMPFILE
+  read -n 1 -rp "run as super user? (y/N)" SUDO
+  echo -e "\n"
+  if [[ $SUDO = "y" ]]; then
+    sudo $TEMPFILE
+  else
+    $TEMPFILE
+  fi
+else
+  echo "program terminated"
+fi
+rm $TEMPFILE

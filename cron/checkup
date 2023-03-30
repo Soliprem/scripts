@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env bash
 
 # Syncs repositories and downloads updates, meant to be run as a cronjob.
 

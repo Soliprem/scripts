@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 FILES="$(ls ~/.local/src/wallpapers/)"
 for FILE in $FILES

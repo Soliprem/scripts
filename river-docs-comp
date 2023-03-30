@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env bash
 grep -G "riverctl map" "$HOME"/.config/river/init |
 	sed -e "s/riverctl//g" \
 		-e "s/-repeat//g" \
