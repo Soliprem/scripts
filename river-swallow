@@ -1,4 +1,5 @@
 #!/bin/env bash
-scratch_tag=$(( 1 << 20 ))
-riverctl set-view-tags ${scratch_tag} && xdg-open "$1"
-riverctl toggle-focused-tags ${scratch_tag}
+swallow_tag=$(( 1 << 21 ))
+riverctl set-view-tags ${swallow_tag} && xdg-open "$1"
+riverctl toggle-focused-tags ${swallow_tag}
+riverctl send-to-previous-tags
