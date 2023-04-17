@@ -1,0 +1,2 @@
+#!/bin/env bash
+wayshot --stdout | convert - -blur 0x8 "$HOME"/.cache/swaylock.png | echo "$HOME"/.cache/swaylock.png

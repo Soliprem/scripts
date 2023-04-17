@@ -1,0 +1,17 @@
+#!/bin/env bash
+temp=/tmp/river-swallow
+swallow_tag=$((1 << $(shuf -i 21-31)))
+main ()
+{
+  if [[ $(cat $temp | grep $swallow_tag ) ]]; then
+  swallow_tag=$((1 << $(shuf -i 21-31)))
+  main
+else
+  echo $swallow_tag >> $temp
+  riverctl set-view-tags ${swallow_tag} && xdg-open "$1"
+  riverctl toggle-focused-tags ${swallow_tag}
+  riverctl send-to-previous-tags
+fi
+  
+}
+main

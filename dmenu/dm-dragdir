@@ -42,7 +42,7 @@ main() {
           # -e 's/Pic/Pictures/g' \
           # -e 's/Img/Images/g'
         # )
-        dragon "$HOME"/"${choice}"*
+        dragon-drop "$HOME"/"${choice}"*
       else
         echo "Program Terminated." && exit 0
       fi

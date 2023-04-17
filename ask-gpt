@@ -1,31 +1,26 @@
 #!/bin/env bash
 
 if [[ "$1" ]]; then
-
-  echo prompt: $1
-  prompt="$1"
-
+	prompt="$1"
+	echo "prompt: $prompt"
 else
-  echo prompt: 
-  read -r prompt
-  
+	echo prompt:
+	read -r prompt
 fi
 
-raw=$( curl https://free.churchless.tech/v1/chat/completions \
-  -s \
-  -H 'Content-Type: application/json' \
-  -d '{
+raw=$(curl https://free.churchless.tech/v1/chat/completions \
+	-s \
+	-H 'Content-Type: application/json' \
+	-d '{
 "model": "gpt-3.5-turbo",
 "messages": [{"role": "user", "content":"'"$prompt"'"}]
 }')
 
-error=$(echo $raw | grep -oP '(?<="error":")[^"]*')
-answer=$(echo $raw |grep -oP '(?<="content":")[^"]*')
-
-if [[ $error || $answer='\ ' ]]; then
-  echo $error
-  echo there has been an error
-  exit 1
+answer=$(echo $raw | grep -oP '(?<="content":")[^"]*')
+if [[ -z $answer ]]; then
+	echo "$raw"
+	echo there has been an error
+	exit 1
 fi
 
-echo assistant: $answer
+echo "assistant: $answer"
