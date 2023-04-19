@@ -1,0 +1,7 @@
+#!/bin/env bash
+
+tempfile=$(mktemp)
+answer=$(gpt-query "$1")
+echo "$answer" >>"$tempfile"
+foot less "$tempfile"
+echo "$answer" | wl-copy

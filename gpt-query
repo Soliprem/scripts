@@ -1,0 +1,18 @@
+#!/bin/env bash
+
+raw=$(curl https://free.churchless.tech/v1/chat/completions \
+	-s \
+	-H 'Content-Type: application/json' \
+	-d '{
+"model": "gpt-3.5-turbo",
+"messages": [{"role": "user", "content":"'"$1"'"}]
+}')
+
+answer=$(echo "$raw" | grep -oP '(?<="content":")[^"]*')
+if [[ -z $answer ]]; then
+	echo "$raw"
+	echo there has been an error
+	exit 1
+fi
+
+echo -e "$answer"
