@@ -13,23 +13,23 @@
 set -euo pipefail
 
 _path="$(cd "$(dirname "${BASH_SOURCE[0]}")" && cd "$(dirname "$(readlink "${BASH_SOURCE[0]}" || echo ".")")" && pwd)"
-if [[  -f "${_path}/_dm-helper.sh" ]]; then
-  # shellcheck disable=SC1090,SC1091
-  source "${_path}/_dm-helper.sh"
+if [[ -f "${_path}/_dm-helper.sh" ]]; then
+	# shellcheck disable=SC1090,SC1091
+	source "${_path}/_dm-helper.sh"
 else
-  # shellcheck disable=SC1090
-  echo "No helper-script found"
+	# shellcheck disable=SC1090
+	echo "No helper-script found"
 fi
 
 # script will not hit this if there is no config-file to load
 # shellcheck disable=SC1090
 source "$(get_config)"
 
-main(){
-  # wm=$(printf "%s" wm_list[@] | ${DMENU} "pick a WM")
-  theme=$(find "$HOME"/.config/wpg/wallpapers/* | cut -d / -f7- | sort | ${DMENU} "Pick a Theme")
-  wpg -s "$theme"
-  $SUDO_ASKPASS make install
+main() {
+	# wm=$(printf "%s" wm_list[@] | ${DMENU} "pick a WM")
+	theme=$(find "$HOME"/.config/wpg/wallpapers/* | cut -d / -f7- | sort | ${DMENU} "Pick a Theme")
+	wpg -s "$theme"
+	# $SUDO_ASKPASS make install
 }
 
 [[ "${BASH_SOURCE[0]}" == "${0}" ]] && main "$@"

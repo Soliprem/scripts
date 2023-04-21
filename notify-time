@@ -1,3 +1,0 @@
-#!/bin/env bash
-makoctl dismiss -a
-notify-send "$(date)"
