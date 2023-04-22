@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
+
 if pgrep waybar; then
-	waybar-restart
+	killall waybar
+else
+	waybar
 fi
-setbg ~/.config/wpg/.current
