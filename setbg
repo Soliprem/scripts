@@ -25,6 +25,8 @@ trueloc="$(readlink -f "$1")" &&
 
 if [ "$XDG_SESSION_TYPE" = "wayland" ]; then
 	swaybg -i "$bgloc" &
+  sleep 1
+  pkill -o swaybg
 else
 	xwallpaper --zoom "$bgloc"
 fi
