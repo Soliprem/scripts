@@ -15,4 +15,6 @@ if [[ -z $answer ]]; then
 	exit 1
 fi
 
+rm gpt.log
+echo "$answer" > gpt.log
 echo -e "$answer"
