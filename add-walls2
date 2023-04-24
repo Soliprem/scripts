@@ -1,0 +1,17 @@
+#!/bin/bash
+
+# Get the list of currently added wallpapers
+wallpapers=$(wpg -l)
+
+# Loop through each file
+for image in $(fd); do
+  if [[ ! $(xdg-mime query filetype "$image") =~ image/* ]]; then
+    :
+  fi
+  # Check if the image file is already part of wpg's list of currently added wallpapers
+  if [[ ! $wallpapers =~ $(basename $image) ]]; then
+    # Add the image file to wpg's list of currently added wallpapers
+    # echo $(basename $image)
+    wpg -a "$image"
+  fi
+done
