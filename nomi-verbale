@@ -1,0 +1,4 @@
+#!/bin/env bash
+
+nome=$(cat ~/vimwiki/nomi.md | fzf)
+printf "**$nome:**\n- " | wl-copy
