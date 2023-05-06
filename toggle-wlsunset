@@ -6,5 +6,5 @@ if pidof wlsunset; then
 else
 	makoctl dismiss -a
 	notify-send "Night Mode On"
-	wlsunset
+	wlsunset -l 44.5 -L 11.33
 fi

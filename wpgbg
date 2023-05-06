@@ -1,13 +1,12 @@
 #!/usr/bin/env bash
+setbg ~/.config/wpg/.current
 if pgrep waybar; then
 	waybar-restart
 fi
 if pgrep mako; then
 	killall mako
-  mako &
+	mako &
 fi
 if pgrep river; then
-  river-theme
+	river-theme
 fi
-
-setbg ~/.config/wpg/.current
