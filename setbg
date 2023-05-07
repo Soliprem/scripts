@@ -20,10 +20,11 @@ trueloc="$(readlink -f "$1")" &&
 	esac
 
 if [ "$XDG_SESSION_TYPE" = "wayland" ]; then
-	swww img "$bgloc" --transition-type any &
+	hyprswww "$bgloc"
+	# swaybg -i "$bgloc" &
 	# add time so there's no moment while there's no background drawn
-	sleep 2
 	# kills to cleanup excess processes
+	# sleep 2
 	# pkill -o swaybg
 else
 	xwallpaper --zoom "$bgloc"

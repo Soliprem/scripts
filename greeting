@@ -1,0 +1,18 @@
+#!/bin/env bash
+# cowsay -f elephant "$(greeting), soli" | lolcat
+date_string="2023-05-07 08:30:00"
+hour=$(date -d "$date_string" "+%H")
+
+if [ "$hour" -ge 5 ] && [ "$hour" -lt 12 ]; then
+	greeting="Good Morning"
+elif [ "$hour" -ge 12 ] && [ "$hour" -lt 17 ]; then
+	greeting="Good Day"
+elif [ "$hour" -ge 17 ] && [ "$hour" -lt 20 ]; then
+	greeting="Good Afternoon"
+elif [ "$hour" -ge 20 ] && [ "$hour" -lt 23 ]; then
+	greeting="Good Evening"
+else
+	greeting="Good Night"
+fi
+
+cowsay -f elephant "$greeting, soli" | lolcat

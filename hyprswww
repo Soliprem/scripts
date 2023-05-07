@@ -1,0 +1,28 @@
+#!/bin/env bash
+
+# Assuming the command output is stored in a variable called output
+output="$(hyprctl cursorpos)"
+
+# Extract x and y from the output
+x=$(echo "$output" | cut -d ',' -f 1)
+y=$(echo "$output" | cut -d ',' -f 2)
+
+# Calculate 1080 - y
+new_y=$((1080 - y))
+
+# Output the result
+cursorpos="$x, $new_y"
+
+random_number=$RANDOM
+if ((random_number % 2 == 0)); then
+	grow_outer_random=grow
+else
+	grow_outer_random=outer
+fi
+
+swww img "$1" --transition-step 1 \
+	--transition-type "$grow_outer_random" \
+	--transition-pos "$cursorpos" \
+	--transition-duration 4 \
+	--transition-fps 120 \
+	--transition-bezier .53,0,.37,.99
