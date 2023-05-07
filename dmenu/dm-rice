@@ -27,7 +27,7 @@ source "$(get_config)"
 
 main() {
 	# wm=$(printf "%s" wm_list[@] | ${DMENU} "pick a WM")
-	theme=$(find "$HOME"/.config/wpg/wallpapers/* | cut -d / -f7- | sort | ${DMENU} "Pick a Theme")
+	theme=$(wpg -l | cut -d / -f7- | sort | ${DMENU} "Pick a Theme")
 	wpg -s "$theme"
 	# $SUDO_ASKPASS make install
 }

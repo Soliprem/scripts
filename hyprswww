@@ -14,10 +14,10 @@ new_y=$((1080 - y))
 cursorpos="$x, $new_y"
 
 random_number=$RANDOM
-if ((random_number % 2 == 0)); then
-	grow_outer_random=grow
-else
+if ((random_number % 3 == 0)); then
 	grow_outer_random=outer
+else
+	grow_outer_random=grow
 fi
 
 swww img "$1" --transition-step 1 \
