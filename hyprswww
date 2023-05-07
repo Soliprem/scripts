@@ -13,12 +13,18 @@ new_y=$((1080 - y))
 # Output the result
 cursorpos="$x, $new_y"
 
-random_number=$RANDOM
-if ((random_number % 3 == 0)); then
-	grow_outer_random=outer
-else
+if [ "$x" -lt "640" ] || [ "$x" -gt "1280" ] || [ "$y" -lt "360" ] || [ "$y" -gt "720" ]; then
 	grow_outer_random=grow
+else
+	grow_outer_random=outer
 fi
+
+# random_number=$RANDOM
+# if ((random_number % 3 == 0)); then
+# 	grow_outer_random=outer
+# else
+# 	grow_outer_random=grow
+# fi
 
 swww img "$1" --transition-step 1 \
 	--transition-type "$grow_outer_random" \

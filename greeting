@@ -1,7 +1,6 @@
 #!/bin/env bash
 # cowsay -f elephant "$(greeting), soli" | lolcat
-date_string="2023-05-07 08:30:00"
-hour=$(date -d "$date_string" "+%H")
+hour=$(date "+%H")
 
 if [ "$hour" -ge 5 ] && [ "$hour" -lt 12 ]; then
 	greeting="Good Morning"
