@@ -1,7 +1,7 @@
 #!/bin/sh
-riverctl background-color "0x8b8b20"
-riverctl border-color-focused "0xcbcb2f"
-riverctl border-color-unfocused "0x8b8b20"
+riverctl background-color "0x542218"
+riverctl border-color-focused "0x7b3123"
+riverctl border-color-unfocused "0x542218"
 
 killall swaybg
 swaybg -i ~/.config/wpg/.current &
