@@ -15,4 +15,4 @@ else
 	greeting="Good Night"
 fi
 
-cowsay -f elephant "$greeting, soli" | lolcat
+cowsay -f elephant "$greeting, Soli" | lolcat
