@@ -1,0 +1,9 @@
+#!/bin/env bash
+list_wallpapers() {
+	wpg -l |
+		while read wallpaper; do
+			echo -en "$wallpaper\x00icon\x1f$HOME/.config/wpg/wallpapers/$wallpaper\n"
+		done
+}
+
+list_wallpapers

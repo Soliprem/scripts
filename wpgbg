@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 setbg ~/.config/wpg/.current
 if pgrep waybar; then
-	waybar-restart
+	waybar-restart &
 fi
 if pgrep mako; then
 	killall mako
