@@ -1,5 +1,4 @@
 #!/bin/env bash
-# cowsay -f elephant "$(greeting), soli" | lolcat
 hour=$(date "+%H")
 
 if [ "$hour" -ge 5 ] && [ "$hour" -lt 12 ]; then
