@@ -2,6 +2,6 @@
 name=$(rofi -dmenu -p "instert name")
 touch "$HOME"/.local/src/paste-images/"$name".png
 wl-paste >"$HOME"/.local/src/paste-images/"$name".png
+echo "![$name](https://raw.githubusercontent.com/Soliprem/paste-images/main/$name.png)"
 cd "$HOME"/.local/src/paste-images/ >/dev/null || exit 1
 update-git &>/dev/null
-echo "![$name](https://raw.githubusercontent.com/Soliprem/paste-images/main/$name.png)"
