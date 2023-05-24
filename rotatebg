@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+while true; do
+	randrice
+	sleep 120
+done
