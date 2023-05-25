@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+hyprdocs=/tmp/hyprdocs
+hyprkeys -bm | pandoc -f markdown -t pdf -o $hyprdocs
+xdg-open $hyprdocs
+rm $hyprdocs

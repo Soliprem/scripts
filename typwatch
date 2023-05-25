@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+typst watch "$1".typ &
+xdg-open "$1".pdf

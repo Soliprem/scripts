@@ -1,5 +1,23 @@
 #!/usr/bin/env bash
+lock_file=/tmp/rotatebg.lock
+if [ -f "$lock_file" ]; then
+	# Retrieve the PID of the running process
+	pid=$(cat "$lock_file")
+
+	# Check if the process is still running
+	if ps -fp "$pid" >/dev/null 2>&1; then
+		notify-send "Stopping Background Cycle"
+		kill "$pid"
+		exit 1
+	else
+		# Remove the lock file if the process is not running
+		rm "$lock_file"
+	fi
+fi
+echo "$$" >"$lock_file"
+notify-send "Starting Background Cycle"
 while true; do
 	randrice
 	sleep 120
 done
+rm $lock_file

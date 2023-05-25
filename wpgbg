@@ -3,10 +3,7 @@ setbg ~/.config/wpg/.current
 if pgrep waybar; then
 	waybar-restart &
 fi
-if pgrep mako; then
-	killall mako
-	mako &
-fi
+restart mako
 if pgrep river; then
 	river-theme
 fi
