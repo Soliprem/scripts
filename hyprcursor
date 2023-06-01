@@ -1,0 +1,38 @@
+#!/usr/bin/env bash
+
+# Assuming the command output is stored in a variable called output
+output="$(hyprctl cursorpos)"
+speed=10
+
+# Extract x and y from the output
+x=$(echo "$output" | cut -d ',' -f 1)
+y=$(echo "$output" | cut -d ',' -f 2)
+
+move() {
+	for _ in $(seq 1 $speed); do
+		x=$((x + $1))
+		y=$((y + $2))
+		hyprctl dispatch movecursor "$x $y"
+	done
+}
+
+while getopts "udlr" opt; do
+	case ${opt} in
+	r)
+		move 1 0
+		;;
+	l)
+		move -1 0
+		;;
+	d)
+		move 0 1
+		;;
+	u)
+		move 0 -1
+		;;
+	\?)
+		echo "only takes -udlr" >&2
+		exit 1
+		;;
+	esac
+done
