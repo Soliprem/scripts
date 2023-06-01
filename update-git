@@ -1,4 +1,11 @@
 #!/usr/bin/env bash
+
+echo -en "write your commit message\n   : "
+read -r message
+if [[ ! $message ]]; then
+	message="update"
+fi
+
 git add .
-git commit -am "update"
+git commit -am "$message"
 git push
