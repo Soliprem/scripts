@@ -1,4 +1,4 @@
-#!/bin/env bash
+#!/usr/bin/env bash
 list_wallpapers() {
 	wpg -l |
 		while read wallpaper; do

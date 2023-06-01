@@ -1,4 +1,4 @@
-#!/bin/env bash
+#!/usr/bin/env bash
 
 # Assuming the command output is stored in a variable called output
 output="$(hyprctl cursorpos)"

@@ -1,4 +1,4 @@
-#!/bin/env bash
+#!/usr/bin/env bash
 hour=$(date "+%H")
 
 if [ "$hour" -ge 5 ] && [ "$hour" -lt 12 ]; then

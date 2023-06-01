@@ -1,4 +1,4 @@
-#!/bin/env bash
+#!/usr/bin/env bash
 temp=/tmp/river-swallow
 swallow_tag=$((1 << $(shuf -i 21-31)))
 main ()
