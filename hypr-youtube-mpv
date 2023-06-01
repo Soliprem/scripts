@@ -3,4 +3,4 @@
 # https://www.youtube.com/watch?v=FsQuGplQvrw
 
 notify-send -t 3000 "Playing Video" "$(wl-paste)"
-hyprctl dispatch exec "[floating:1;pin;size: 40% 40%;center] mpv --ytdl-format=bestvideo+bestaudio/best --speed=1 $(wl-paste)"
+hyprctl dispatch exec "[floating:1;pin;size: 40% 40%;move 59% 5%] mpv --ytdl-format=bestvideo+bestaudio/best --speed=1 $(wl-paste)"
