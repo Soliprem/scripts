@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+
+VOLUME=$(mpc status %volume% | sed -e "s/%//g" -e "s/ //g")
+
+if [ "${VOLUME}" == "0" ]; then
+	ICON=婢
+elif [ "${VOLUME}" -lt "33" ] && [ "$VOLUME" -gt "0" ]; then
+	ICON=奄
+elif [ "${VOLUME}" -lt "90" ] && [ "$VOLUME" -ge "33" ]; then
+	ICON=奔
+else
+	ICON=墳
+fi
+
+makoctl dismiss -a
+notify-send "${ICON} MPC Volume: $VOLUME%" \
+	-h int:value:"${VOLUME}"
