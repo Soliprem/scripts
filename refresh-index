@@ -1,2 +1,3 @@
 #!/usr/bin/env bash
-fd --absolute-path -e pdf -e jpg -e png -e jpeg -e mp4 -e mp3 . -H -E "*wpg*" > ~/.cache/documents_index.txt
+fd --absolute-path -e pdf -e jpg -e png -e jpeg -e mp4 -e mp3 . -H -E "*wpg*" >~/.cache/documents_index.txt
+notify-send "Document Index Refreshed"
