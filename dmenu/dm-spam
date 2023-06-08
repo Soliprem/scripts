@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # assist: repeat a given text n times
 
@@ -12,13 +12,8 @@ if ! [ "$LOOP" -eq "$LOOP" ]; then
 	LOOP=10
 fi
 
-sleep 4
-echo "$LOOP"
+sleep 1
 
-x=$LOOP
-while [ $x -gt 0 ]; do
-	xdotool type "$TEXT"
-	sleep 0.05
-	xdotool key KP_Enter
-	x=$(($x - 1))
+for _ in $(seq 1 $LOOP); do
+	wtype "$TEXT" -P KP_Enter
 done
