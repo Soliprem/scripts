@@ -2,5 +2,5 @@
 if [ "$XDG_SESSION_TYPE" = "x11" ]; then
 	echo -n "ə" | xclip -selection clipboard
 else
-	wl-copy "ə"
+	wtype "ə"
 fi
