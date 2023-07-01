@@ -26,6 +26,7 @@ fi
 source "$(get_config)"
 
 main() {
+	refresh-index &
 	choice=$(
 		cut -d '/' -f4- ~/.cache/documents_index.txt |
 			sed -e 's/Documents/Dcs/g' \
@@ -49,7 +50,6 @@ main() {
 	else
 		echo "Program Terminated." && exit 0
 	fi
-	refresh-index
 }
 
 [[ "${BASH_SOURCE[0]}" == "${0}" ]] && main "$@"

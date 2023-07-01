@@ -12,13 +12,13 @@ STATE=$(pamixer --get-mute)
 # Have a different symbol for varying volume levels:
 if [[ $STATE != 'true' ]]; then
 	if [ "${VOLUME}" == "0" ]; then
-		ICON=婢
+		ICON=󰝟
 	elif [ "${VOLUME}" -lt "33" ] && [ "$VOLUME" -gt "0" ]; then
-		ICON=奄
+		ICON=
 	elif [ "${VOLUME}" -lt "90" ] && [ "$VOLUME" -ge "33" ]; then
-		ICON=奔
+		ICON=󰕾
 	else
-		ICON=墳
+		ICON=
 	fi
 
 	makoctl dismiss -a
@@ -28,6 +28,6 @@ if [[ $STATE != 'true' ]]; then
 # If volume is muted, display the mute sybol:
 else
 	makoctl dismiss -a
-	notify-send "婢 (Volume: $VOLUME%)" \
+	notify-send "󰖁 (Volume: $VOLUME%)" \
 		-h int:value:"${VOLUME}"
 fi
