@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+if pidof swww-daemon; then
+	killall swww-daemon
+else
+	swww init
+fi

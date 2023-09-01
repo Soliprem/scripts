@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+export WINEARCH=win64
+export WINEPREFIX=~/.local/share/bottles/bottles/ReMarkable/dosdevices/
+wine $WINEPREFIX/c:/Program\ Files\ \(x86\)/reMarkable/reMarkable.exe

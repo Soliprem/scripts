@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 
+mpc listall | shuf -n 1 | mpc add >>/dev/null
 mpc random >>/dev/null
 mpc next >>/dev/null
 mpc play >>/dev/null
+mpc pause >>/dev/null
 mpc random

@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+if pidof swww-daemon; then
+	toggle-swww
+  toggle-swww
+else
+	swww init
+fi
