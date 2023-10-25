@@ -5,7 +5,7 @@
 # Dependencies: dmenu
 # GitLab: https://www.gitlab.com/dwt1/dmscripts
 # License: https://www.gitlab.com/dwt1/dmscripts/LICENSE
-# Contributors: Derek Taylor, HostGrady
+# Contributors: Soliprem
 
 # Set with the flags "-e", "-u","-o pipefail" cause the script to fail
 # if certain things happen, which is a good thing.  Otherwise, we can
@@ -26,7 +26,6 @@ fi
 source "$(get_config)"
 
 main() {
-	refresh-index &
 	choice=$(
 		cut -d '/' -f4- ~/.cache/documents_index.txt |
 			sed -e 's/Documents/Dcs/g' \
@@ -34,7 +33,6 @@ main() {
 				-e 's/.local/lcl/g' \
 				-e 's/Pictures/Pic/g' \
 				-e 's/Images/Img/g' |
-			sort -g |
 			${DMENU} "File: " "$@"
 	) || exit 1
 	if [ "$choice" ]; then
@@ -50,6 +48,7 @@ main() {
 	else
 		echo "Program Terminated." && exit 0
 	fi
+	refresh-index
 }
 
 [[ "${BASH_SOURCE[0]}" == "${0}" ]] && main "$@"
