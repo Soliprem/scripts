@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+BATTERY_LEVEL=$(cat /sys/class/power_supply/BAT1/capacity)
+makoctl dismiss -a
+notify-send "Battery: $BATTERY_LEVEL%" \
+	-h int:value:"${BATTERY_LEVEL}"
