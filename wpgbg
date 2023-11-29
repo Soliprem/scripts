@@ -4,6 +4,11 @@ sleep 2
 if pgrep waybar; then
 	waybar-restart &
 fi
+if pgrep gBar; then
+	sass ~/.config/gBar/style.scss >~/.config/gBar/style.css
+	killall gBar
+	gBar bar 0 &
+fi
 makoctl reload
 if pgrep river; then
 	river-theme
