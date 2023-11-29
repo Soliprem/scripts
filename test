@@ -1,0 +1,24 @@
+import os
+import time
+import subprocess
+
+# Check if the hardware keyboard is disabled
+def is_keyboard_disabled():
+  return subprocess.run(["hyprctl", "inputs", "list"], stdout=subprocess.PIPE).stdout.decode("utf-8").count("Keyboard") == 0
+
+# Toggle the virtual keyboard
+def toggle_virtual_keyboard():
+  subprocess.run(["wvkbd", "-t"])
+
+# Main function
+def main():
+  while True:
+    # If the hardware keyboard is disabled and an input field is selected, toggle the virtual keyboard
+    if is_keyboard_disabled() and os.getenv("HYPRLAND_WINDOW_TYPE") == "INPUT":
+      toggle_virtual_keyboard()
+
+    # Wait for 0.1 seconds
+    time.sleep(0.1)
+
+if __name__ == "__main__":
+  main()
