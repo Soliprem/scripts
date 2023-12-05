@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+main() {
+	sass ~/.config/gBar/style.scss >~/.config/gBar/style.css
+	killall gBar
+	gBar bar 0
+}
+pidof gBar && main || gBar bar 0 && main

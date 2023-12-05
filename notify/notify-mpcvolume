@@ -12,6 +12,6 @@ else
 	ICON=墳
 fi
 
-makoctl dismiss -a
+makoctl dismiss -a || swaync-client -C
 notify-send "${ICON} MPC Volume: $VOLUME%" \
 	-h int:value:"${VOLUME}"

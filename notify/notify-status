@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-makoctl dismiss -a
+makoctl dismiss -a || swaync-client -C
 
 songname=$(mpc current)
 playpause=$(mpc status %state%)
