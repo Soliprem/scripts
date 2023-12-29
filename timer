@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+echo "how long should the timer be?"
+read -r time
+termdown $time && hyprctl dispatch exec "[fullscreen] mpv ＊Best＊\ Alarm\ Clock\ Sound\ for\ IOS⧸ANDROID!\ \(Best\ alarm\ sounds\)\ \[3AbM4exnEIc\].webm"
