@@ -11,6 +11,6 @@ else
 	ICON=
 fi
 
-makoctl dismiss -a
+makoctl dismiss -a || swaync-client -C
 notify-send "${ICON} $BRIGHTNESS%" \
 	-h int:value:"${BRIGHTNESS}"

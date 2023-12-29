@@ -7,11 +7,11 @@ output="$(hyprctl cursorpos)"
 x=$(echo "$output" | cut -d ',' -f 1)
 y=$(echo "$output" | cut -d ',' -f 2)
 
-# Calculate 1080 - y
-# new_y=$((1080 - y))
+Calculate 1080 - y
+new_y=$((1080 - y))
 
-# on laptop y is 1200
-new_y=$((1200 - y))
+# # on laptop y is 1200
+# new_y=$((1200 - y))
 
 # Output the result
 cursorpos="$x, $new_y"
