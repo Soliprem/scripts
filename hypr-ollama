@@ -1,2 +1,2 @@
 #!/usr/bin/env bash
-hyprctl dispatch exec "[floating:1;pin;size: 20% 20%;move 50% 50%] kitty ollama run mistral"
+hyprctl dispatch exec "[floating:1;pin;size: 20% 20%;move 50% 50%] kitty ollama run mixtral"

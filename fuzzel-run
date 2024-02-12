@@ -1,0 +1,2 @@
+#! /usr/bin/env bash
+ls $(echo ${PATH//:/ }) | fuzzel -d | /bin/sh

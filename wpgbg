@@ -14,3 +14,9 @@ if pgrep river; then
 	river-theme
 fi
 notify-send -i "$HOME"/.config/wpg/.current "Changing theme..."
+if pgrep spotify; then
+	echo "yeah"
+	spicetify apply && spotify
+else
+	spicetify apply
+fi

@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+cd ~/Documents/neorg || exit 1
+nvim -c "Neorg workspace notes"
