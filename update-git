@@ -8,4 +8,9 @@ fi
 
 git add .
 git commit -am "$message"
-git push
+
+echo -en "Push?(N/yes)"
+read -r push
+if [[ $push = "yes" ]]; then
+    git push
+fi

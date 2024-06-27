@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+
+if [[ $1 ]]; then
+	wallpaper="$1"
+else
+	cd "$HOME"/Pictures/wallpapers || return 1
+	wallpaper="$(yad --width 1200 --height 800 --file --add-preview --large-preview --title='Choose wallpaper')"
+fi
+
+if [[ $wallpaper ]]; then
+	rm "$XDG_CONFIG_HOME"/nix-config/assets/bg || echo "no bg file found"
+	cp "$wallpaper" "$XDG_CONFIG_HOME"/nix-config/assets/bg
+	notify-send -i "$HOME"/.config/nix-config/assets/bg "Changing theme (this may take a while)..."
+	home-manager switch --flake "$XDG_CONFIG_HOME"/nix-config/#"$USER"@"$HOSTNAME"
+	notify-send "all done!"
+else
+	echo "no wallpaper selected"
+fi

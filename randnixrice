@@ -1,0 +1,2 @@
+#!/usr/bin/env bash
+wallpaper-to-rice-nix "$(fd . ~/Pictures/wallpapers/ -e .png -e .jpg -e .svg | shuf -n 1)"
