@@ -1,0 +1,52 @@
+#!/usr/bin/env sh
+# Create a dated text file at a specific location and append text to it.
+#
+# Usage:
+#   $ notes something you want to jot down (appends that text to the file)
+#   $ xclip -o | notes                     (appends your clipboard to the file)
+#   $ notes                                (opens the file in your editor)
+#
+# Produces:
+#   YYYY-MM.txt in your $NOTES_DIRECTORY (this is set below).
+
+set -e
+readonly NOTES_DIRECTORY="${NOTES_DIRECTORY:-${HOME}/Documents/Nextcloud/Notes/markdown}"
+readonly NOTES_EDITOR="${EDITOR}"
+
+if [ "$1" = "-f" ]; then
+	readonly NOTES_FILE="$2.md"
+    readonly OUTPUT="${@:3}"
+else
+	readonly NOTES_FILE="$(date +%Y-%m).md"
+fi
+
+readonly NOTES_PATH="${NOTES_DIRECTORY}/${NOTES_FILE}"
+
+if [ ! -d "${NOTES_DIRECTORY}" ]; then
+	while true; do
+		printf "%s does not exist, do you want to create it? (y/n) " "${NOTES_DIRECTORY}"
+		read -r yn
+
+		case "${yn}" in
+		[Yy]*)
+			mkdir -p "${NOTES_DIRECTORY}"
+			break
+			;;
+		[Nn]*) exit ;;
+		*) printf "Please answer y or n\n\n" ;;
+		esac
+	done
+fi
+
+if [ "$OUTPUT" = "" ]; then
+	if [ -p "/dev/stdin" ]; then
+		(
+			cat
+			printf "\n\n"
+		) >>"${NOTES_PATH}"
+	else
+		eval "${NOTES_EDITOR}" "${NOTES_PATH}"
+	fi
+else
+	printf "%s\n\n" "$OUTPUT" >>"${NOTES_PATH}"
+fi

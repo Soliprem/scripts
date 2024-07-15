@@ -1,6 +1,9 @@
 #!/usr/bin/env bash
 if pgrep remouse; then
-	killall remouse
+	kill $(pgrep remouse)
+	notify-send "remouse terminated"
 else
-	hyprctl dispatch exec "[floating:1] remouse --evdev --region"
+	# hyprctl dispatch exec "[floating:1] remouse --evdev --region"
+	remouse --evdev
+	notify-send "starting remouse"
 fi

@@ -17,27 +17,27 @@ source "${_path}/_dm-helper.sh"
 # shellcheck disable=SC1090
 source "$(get_config)"
 
-check_updated_config
+# check_updated_config
 
 function main() {
-    local _self
-    declare -A _scripts
+	local _self
+	declare -A _scripts
 
-    _self=$(basename "$0")
+	_self=$(basename "$0")
 
-    while IFS= read -r -d '' script; do
-        script_name="$(basename "${script}")"
-        [[ "${script_name}" == "${_self}" ]] && continue
-        _scripts[${script_name}]="${script}"
-    done< <(find "${_path}" -type f -regex ".*/dm-.*" -print0)
+	while IFS= read -r -d '' script; do
+		script_name="$(basename "${script}")"
+		[[ "${script_name}" == "${_self}" ]] && continue
+		_scripts[${script_name}]="${script}"
+	done < <(find "${_path}" -type f -regex ".*/dm-.*" -print0)
 
-    choice=$(printf '%s\n' "${!_scripts[@]}" | sort | ${DMENU} 'Run Script:' "$@")
+	choice=$(printf '%s\n' "${!_scripts[@]}" | sort | ${DMENU} 'Run Script:' "$@")
 
-    if [ "${choice}" ]; then
-        bash "$(printf '%s\n' "${_scripts["${choice}"]}")" "$@"
-    else
-        echo "Program terminated." && exit 0
-    fi
+	if [ "${choice}" ]; then
+		bash "$(printf '%s\n' "${_scripts["${choice}"]}")" "$@"
+	else
+		echo "Program terminated." && exit 0
+	fi
 }
 
 [[ "${BASH_SOURCE[0]}" == "${0}" ]] && main "$@"

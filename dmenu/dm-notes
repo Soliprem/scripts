@@ -1,16 +1,15 @@
 #!/usr/bin/env bash
 #
-# Script name: dm-dictionary
-# Description: uses the translate package as a dictionary
-# Dependencies: didyoumean
+# Script name: dm-note
+# Description: Store multiple one-line texts or codes and copy one of them when needed.
+# Dependencies: dmenu, xclip
 # GitLab: https://www.gitlab.com/dwt1/dmscripts
 # License: https://www.gitlab.com/dwt1/dmscripts/LICENSE
-# Contributors: Francesco Prem Solidoro
+# Contributors: Fawzakin
 
 # Set with the flags "-e", "-u","-o pipefail" cause the script to fail
 # if certain things happen, which is a good thing.  Otherwise, we can
 # get hidden bugs that are hard to discover.
-
 set -euo pipefail
 
 _path="$(cd "$(dirname "${BASH_SOURCE[0]}")" && cd "$(dirname "$(readlink "${BASH_SOURCE[0]}" || echo ".")")" && pwd)"
@@ -27,17 +26,13 @@ fi
 source "$(get_config)"
 
 main() {
-	WORD="$(echo "" | ${DMENU} "Enter Word:")"
-
-	if ! [ "${WORD}" ] || [ "${WORD}" = "quit" ]; then
-		printf 'No word inserted\n' >&2
-		exit 0
-	fi
-
-	if [ "$XDG_SESSION_TYPE" = "wayland" ]; then
-		dym -c "$WORD" | ${DMENU} "Select Correct Spelling:" | wl-copy
+	current_files=$(ls ~/Documents/Nextcloud/Notes/markdown/)
+	chosen_file=$(echo -e "none\n$current_files" | ${DMENU} "Project")
+	if [ "$chosen_file" == "none" ]; then
+		$TERMINAL notes
 	else
-		dym -c "$WORD" | ${DMENU} "Select Correct Spelling:" | xclip -selection clipboard
+		file=$(basename -s .md "$chosen_file")
+		$TERMINAL notes -f "$file"
 	fi
 }
 

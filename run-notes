@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+current_files=$(ls ~/Documents/Nextcloud/Notes/markdown/)
+chosen_file=$(echo -e "none\n$current_files" | fzf)
+if [ "$chosen_file" == "none" ]; then
+	$TERMINAL notes
+else
+	file=$(basename -s .md "$chosen_file")
+	$TERMINAL notes -f "$file"
+fi
