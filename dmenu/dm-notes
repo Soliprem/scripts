@@ -26,13 +26,14 @@ fi
 source "$(get_config)"
 
 main() {
-	current_files=$(ls ~/Documents/Nextcloud/Notes/markdown/)
+	current_files=$(fd . ~/Documents/Nextcloud/Notes/markdown/ -e .md | cut -d '/' -f8-)
 	chosen_file=$(echo -e "none\n$current_files" | ${DMENU} "Project")
 	if [ "$chosen_file" == "none" ]; then
-		$TERMINAL notes
+		$DMTERM notes
 	else
-		file=$(basename -s .md "$chosen_file")
-		$TERMINAL notes -f "$file"
+		file="${chosen_file%.*}"
+		echo $file
+		$DMTERM notes -f "$file"
 	fi
 }
 

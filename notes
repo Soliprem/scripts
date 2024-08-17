@@ -16,11 +16,12 @@ readonly NOTES_EDITOR="${EDITOR}"
 if [ "$1" = "-f" ]; then
 	readonly NOTES_FILE="$2.md"
     readonly OUTPUT="${@:3}"
+
+    readonly NOTES_PATH="${NOTES_DIRECTORY}/${NOTES_FILE}"
 else
 	readonly NOTES_FILE="$(date +%Y-%m).md"
+    readonly NOTES_PATH="${NOTES_DIRECTORY}/raw/${NOTES_FILE}"
 fi
-
-readonly NOTES_PATH="${NOTES_DIRECTORY}/${NOTES_FILE}"
 
 if [ ! -d "${NOTES_DIRECTORY}" ]; then
 	while true; do
