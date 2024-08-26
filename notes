@@ -46,6 +46,7 @@ if [ "$OUTPUT" = "" ]; then
 			printf "\n\n"
 		) >>"${NOTES_PATH}"
 	else
+        cd "${NOTES_DIRECTORY}" || exit 1
 		eval "${NOTES_EDITOR}" "${NOTES_PATH}"
 	fi
 else

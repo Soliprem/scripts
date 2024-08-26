@@ -1,0 +1,2 @@
+#!/usr/bin/env bash
+appimage-run ~/Downloads/zen-specific.AppImage
