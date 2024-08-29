@@ -26,15 +26,15 @@ fi
 source "$(get_config)"
 
 main() {
-	current_files=$(fd . ~/Documents/Nextcloud/Notes/markdown/ -t f | cut -d / -f8-)
-	chosen_file=$(echo -e "none\n$current_files" | ${DMENU} "Project")
+	current_files=$(fd . ~/Documents/Nextcloud/Notes/markdown/ -e .md | cut -d '/' -f8-)
+	chosen_file=$(echo -e "none\n$current_files" | ${DMENU} "Project: ")
 	if [ "$chosen_file" == "none" ]; then
-		$TERMINAL notes
+		$DMTERM notes
 	elif [ "$chosen_file" == "" ]; then
 		notify-send "nothing was selected"
 	else
 		file="${chosen_file%.*}"
-		$TERMINAL notes -f "$file"
+		$DMTERM notes -f "$file"
 	fi
 }
 

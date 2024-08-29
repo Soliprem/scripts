@@ -16,11 +16,12 @@ readonly NOTES_EDITOR="${EDITOR}"
 if [ "$1" = "-f" ]; then
 	readonly NOTES_FILE="$2.md"
     readonly OUTPUT="${@:3}"
-else
-	readonly NOTES_FILE="monthly/$(date +%Y-%m).md"
-fi
 
-readonly NOTES_PATH="${NOTES_DIRECTORY}/${NOTES_FILE}"
+    readonly NOTES_PATH="${NOTES_DIRECTORY}/${NOTES_FILE}"
+else
+	readonly NOTES_FILE="$(date +%Y-%m).md"
+    readonly NOTES_PATH="${NOTES_DIRECTORY}/raw/${NOTES_FILE}"
+fi
 
 if [ ! -d "${NOTES_DIRECTORY}" ]; then
 	while true; do
@@ -45,6 +46,7 @@ if [ "$OUTPUT" = "" ]; then
 			printf "\n\n"
 		) >>"${NOTES_PATH}"
 	else
+        cd "${NOTES_DIRECTORY}" || exit 1
 		eval "${NOTES_EDITOR}" "${NOTES_PATH}"
 	fi
 else

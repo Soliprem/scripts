@@ -24,5 +24,5 @@ fi
 # shellcheck disable=SC1090
 source "$(get_config)"
 
-name=$(cat ~/vimwiki/nomi.md | ${DMENU})
+name=$(cat ~/vimwiki/nomi.md | ${DMENU} "Names: ")
 printf "\n**$name:**\n- "

@@ -1,5 +1,21 @@
 #!/usr/bin/env bash
 
+lock_file=/tmp/pomodoro.lock
+if [ -f "$lock_file" ]; then
+	# Retrieve the PID of the running process
+	pid=$(cat "$lock_file")
+
+	# Check if the process is still running
+	if ps -fp "$pid" >/dev/null 2>&1; then
+		notify-send "Stopping Pomodoro"
+		kill "$pid"
+		exit 1
+	else
+		# Remove the lock file if the process is not running
+		rm "$lock_file"
+	fi
+fi
+echo "$$" >"$lock_file"
 # DEFAULT VALUES
 ICON="xclock"
 NAME="Simple Pomodoro"
@@ -142,3 +158,4 @@ do
 	done
 done
 quit
+rm $lock_file
