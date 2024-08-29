@@ -17,7 +17,7 @@ if [ "$1" = "-f" ]; then
 	readonly NOTES_FILE="$2.md"
     readonly OUTPUT="${@:3}"
 else
-	readonly NOTES_FILE="$(date +%Y-%m).md"
+	readonly NOTES_FILE="monthly/$(date +%Y-%m).md"
 fi
 
 readonly NOTES_PATH="${NOTES_DIRECTORY}/${NOTES_FILE}"
