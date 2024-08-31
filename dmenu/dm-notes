@@ -26,8 +26,8 @@ fi
 source "$(get_config)"
 
 main() {
-	current_files=$(fd . ~/Documents/Nextcloud/Notes/markdown/ -e .md | cut -d '/' -f8-)
-	chosen_file=$(echo -e "none\n$current_files" | ${DMENU} "Project: " -q "n")
+	# current_files=$(fd . ~/Documents/Nextcloud/Notes/markdown/ -e .md | cut -d '/' -f8-)
+  chosen_file=$(echo -e "none\n$(fd . ~/Documents/Nextcloud/Notes/markdown/ -e .md | cut -d '/' -f8-)" | ${DMENU} "Project: ") # -q "n")
 	if [ "$chosen_file" == "none" ]; then
 		$DMTERM notes
 	elif [ "$chosen_file" == "" ]; then
