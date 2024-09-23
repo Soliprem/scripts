@@ -1,0 +1,2 @@
+#/usr/bin/env nu
+cd ~/Documents/Nextcloud/Notes/markdown; nvim . -c 'Telescope fd'
