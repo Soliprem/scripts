@@ -7,9 +7,8 @@ main() {
 	sleep 0.05
 
 	# Get the volume and check if muted or not (STATE):
-	VOLUME=$(pamixer --get-volume)
-
-	STATE=$(pamixer --get-mute)
+    VOLUME=$(wpctl get-volume @DEFAULT_AUDIO_SINK@ | awk '{print int($2 * 100)}')
+    STATE=$(wpctl get-volume @DEFAULT_AUDIO_SINK@ | grep -q MUTED &> /dev/null && echo true || echo false)
 	# Have a different symbol for varying volume levels:
 	if [[ $STATE != 'true' ]]; then
 		if [ "${VOLUME}" == "0" ]; then
