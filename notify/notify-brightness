@@ -2,13 +2,15 @@
 BRIGHTNESS=$(brightnessctl | sed 's/.*(\(.*\))/\1/' | sed -e 's/%//g' | head -n 2 | tail -n 1)
 
 if [ "${BRIGHTNESS}" == "0" ]; then
-	ICON=
+	ICON=🌑
 elif [ "${BRIGHTNESS}" -lt "33" ] && [ "$BRIGHTNESS" -gt "0" ]; then
-	ICON=
-elif [ "${BRIGHTNESS}" -lt "90" ] && [ "$BRIGHTNESS" -ge "33" ]; then
-	ICON=
+	ICON=🌒
+elif [ "${BRIGHTNESS}" -lt "66" ] && [ "$BRIGHTNESS" -ge "33" ]; then
+	ICON=🌓
+elif [ "${BRIGHTNESS}" -lt "90" ] && [ "$BRIGHTNESS" -ge "66" ]; then
+	ICON=🌔
 else
-	ICON=
+	ICON=🌕
 fi
 
 makoctl dismiss -a || swaync-client -C
