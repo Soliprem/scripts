@@ -2,10 +2,10 @@
 
 # assist: repeat a given text n times
 
-TEXT="$(echo test | rofi -dmenu -p 'spam text')"
+TEXT="$(echo test | fuzzel --dmenu -p 'spam text')"
 [ -n "$TEXT" ] || exit
 
-LOOP="$(echo 10 | rofi -dmenu -p 'repeat')"
+LOOP="$(echo 10 | fuzzel --dmenu -p 'repeat')"
 [ -n "$LOOP" ] || exit
 
 if ! [ "$LOOP" -eq "$LOOP" ]; then
