@@ -13,4 +13,4 @@ else
 	greeting="Good Night"
 fi
 
-cowsay -f elephant "$greeting, Soli" | dotacat
+fastfetch --data-raw "$(cowsay -f elephant "$greeting, Soli" | dotacat)"
